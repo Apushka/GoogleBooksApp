@@ -9,7 +9,7 @@ export type GetCatalogResponseType = {
 
 export const booksAPI = {
     getCatalog({ category, search, sorting}: FormDataType, startIndex: number, maxResults: number) {
-        return axios.get<GetCatalogResponseType>(`https://www.googleapis.com/books/v1/volumes?q=${search}+subject:${category === 'all' ? '': category}&orderBy=${sorting}&startIndex=${startIndex}&maxResults=${maxResults}`, {
+        return axios.get<GetCatalogResponseType>(`/books/v1/volumes?q=${search}+subject:${category === 'all' ? '': category}&orderBy=${sorting}&startIndex=${startIndex}&maxResults=${maxResults}`, {
             headers: {
                 "API-KEY": "AIzaSyC1IPy_Wayo3fgI14j-i2FAqEkAbRq9jQU"
             }
@@ -19,7 +19,7 @@ export const booksAPI = {
             })
     },
     getBook(volumeId: string) {
-        return axios.get<ItemType>(`https://www.googleapis.com/books/v1/volumes/${volumeId}`, {
+        return axios.get<ItemType>(`/books/v1/volumes/${volumeId}`, {
             headers: {
                 "API-KEY": "AIzaSyC1IPy_Wayo3fgI14j-i2FAqEkAbRq9jQU"
             }
